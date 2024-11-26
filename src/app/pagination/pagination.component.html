@@ -1,0 +1,21 @@
+<nav aria-label="Page navigation" class="my-4">
+  <ul class="pagination justify-content-center">
+   
+    <!-- Páginas -->
+    <nav aria-label="Page navigation">
+      <ul class="pagination">
+        <!-- Botón Previous -->
+        <li class="page-item" [class.disabled]="currentPage === 1">
+          <a class="page-link" (click)="onPrevious()" aria-label="Previous">Previous
+          </a>
+        </li>
+    
+        <!-- Botón Next -->
+        <li class="page-item" [class.disabled]="currentPage === totalPages">
+          <a class="page-link" (click)="onNext()" aria-label="Next">Next
+       
+          </a>
+        </li>
+      </ul>
+    </nav>
+    

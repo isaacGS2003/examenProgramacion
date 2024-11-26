@@ -1,0 +1,55 @@
+<!-- Hero Section -->
+
+<div class="container">
+  <!-- Campo de búsqueda -->
+  <div class="row my-4">
+    <div class="col-md-6 mx-auto">
+      <div class="input-group">
+        <input type="text" class="form-control" [(ngModel)]="searchTerm"
+          placeholder="Buscar trabajador por nombre o ID..." (keyup.enter)="onSearch()" />
+        <button class="btn btn-success" type="button" (click)="onSearch()">
+          <i class="fas fa-search"></i> Buscar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabla de resultados -->
+  <table class="table caption-top">
+    <caption><button class="btn " routerLink="/miapi/create">
+        <strong>Registra un nuevo trabajador aquí!</strong>
+      </button></caption>
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
+        <th scope="col">Puesto</th>
+        <th scope="col">Horario</th>
+        <th scope="col">Salario</th>
+        <th scope="col">Teléfono de Contacto</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let trabajador of searchResults; let i = index">
+        <td>{{ trabajador.nombre }}</td>
+        <td>{{ trabajador.apellido }}</td>
+        <td>{{ trabajador.puesto }}</td>
+        <td>{{ trabajador.horario }}</td>
+        <td>{{ trabajador.salario }}$</td>
+        <td>{{ trabajador.telefono_contacto }}</td>
+        <td>
+          <!-- Botón de Actualizar -->
+          <a class="btn btn-sm" [routerLink]="['/miapi/update', trabajador._id]">
+            <strong>Editar</strong>
+          </a>
+          <!-- Botón de Eliminar -->
+          <a class="btn btn-sm me-2" (click)="eliminarTrabajador(trabajador._id)">
+            <strong>Eliminar</strong>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+</div>
